@@ -27,6 +27,7 @@ services:
       
       
   # sudo docker compose run artisan migrate -миграция и обращение к артизан
+  # sudo docker compose run artisan composer install - установка пакетов композером 
   artisan:
     build: 
       context: dockerfiles
