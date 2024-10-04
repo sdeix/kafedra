@@ -4,7 +4,11 @@ WORKDIR /var/www/laravel
 
 
 
+
+
 RUN docker-php-ext-install pdo pdo_mysql;
+
+
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php

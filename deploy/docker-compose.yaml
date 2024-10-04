@@ -26,14 +26,14 @@ services:
       - env/mysql.env
       
       
-  # sudo docker compose run artisan migrate -миграция и обращение к артизан
-  # sudo docker compose run artisan composer install - установка пакетов композером 
+ 
   artisan:
     build: 
       context: dockerfiles
-      dockerfile: php.dockerfile
+      dockerfile: artisan.dockerfile
     volumes:
       - ../project:/var/www/laravel  
     entrypoint: ['php','/var/www/laravel/artisan']
+    
 
 
