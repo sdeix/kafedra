@@ -18,6 +18,9 @@ services:
       dockerfile: php.dockerfile
     volumes:
       - ../project:/var/www/laravel   
+    group_add:
+      - 1000
+    user: "1000"
   mysql: 
     image: mysql:8.0
     ports:
