@@ -12,6 +12,7 @@ services:
     depends_on:
       - php
       - mysql
+      - phpmyadmin
   php:
     build: 
       context: dockerfiles
@@ -24,7 +25,13 @@ services:
       - "3306:3306"
     env_file:
       - env/mysql.env
-      
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8090:80
+    environment:
+      - PMA_ARBITRARY=1   
       
  
   artisan:
@@ -34,6 +41,6 @@ services:
     volumes:
       - ../project:/var/www/laravel  
     entrypoint: ['php','/var/www/laravel/artisan']
-    
+    restart: no
 
 
