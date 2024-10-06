@@ -18,7 +18,8 @@ services:
       context: dockerfiles
       dockerfile: php.dockerfile
     volumes:
-      - ../project:/var/www/laravel   
+      - ../project:/var/www/laravel  
+    command: ["/bin/sh", "-c", "chown -R www-data:www-data /var/www/laravel/storage /var/www/laravel/bootstrap/cache && php-fpm"] 
   mysql: 
     image: mysql:8.0
     ports:
