@@ -4,9 +4,11 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
+    
     /**
      * A list of the exception types that are not reported.
      *
@@ -27,15 +29,20 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    /**
+/**
      * Register the exception handling callbacks for the application.
      *
      * @return void
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            if ($request->is('api-shop/*')) { 
+                return response()->json([
+                    'message' => 'not found.'
+                ], 404);
+            }
         });
     }
+
 }

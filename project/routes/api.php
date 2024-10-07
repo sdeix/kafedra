@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,3 +22,13 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout')->middleware("checktoken");
 });
 
+Route::get('/products',[ProductController::class,"index"]);
+
+
+// Route::middleware('с')->group(function () {
+//     Route::get('/products', 'ProductController@index');
+//     Route::get('/products/{id}', 'ProductController@show');
+//     Route::post('/products', 'ProductController@store');
+//     Route::put('/products/{id}', 'ProductController@update');
+//     Route::delete('/products/{id}', 'ProductController@destroy');
+// });
