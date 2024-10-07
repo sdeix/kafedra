@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,4 +39,10 @@ Route::middleware('checktoken')->group(function () {
 
     Route::get('/order', [OrderController::class,'getOrders']);
     Route::post('/order', [OrderController::class,'checkout']);
+
+    Route::middleware('adminrole')->group(function () {
+        Route::post('/product', [AdminController::class,'addNewProduct']);
+        Route::delete('/product/{id}', [AdminController::class,'deleteProduct']);
+        Route::patch('/product/{id}', [AdminController::class,'patchProduct']);
+    });
 });
