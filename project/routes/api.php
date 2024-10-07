@@ -31,6 +31,7 @@ Route::controller(CartController::class)->group(function () {
 });
 Route::middleware('checktoken')->group(function () {
     Route::post('/cart/{product_id}', [CartController::class,'addProduct']);
+    Route::delete('/cart/{product_id}', [CartController::class,'removeProduct']);
     Route::get('/cart', [CartController::class,'getCart']);
 
 });

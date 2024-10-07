@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\User;
@@ -42,4 +43,29 @@ class CartController extends Controller
         });
         return response()->json($products);
     }
+
+    public function removeProduct(Request $request, $productId)
+{
+    $user = User::where('token', $request->bearerToken())->first();
+    $cart = Cart::where('user_id', $user->id)->first();
+    if (!$cart) {
+        return response()->json(['error' => 'Корзина пуста'], 404);
+    }
+
+    $product = Product::find($productId);
+    if (!$product) {
+        return response()->json(['error' => 'Товар не найден'], 404);
+    }
+
+
+    if(DB::table('cart_product')->where('cart_id', $cart->id)->where('product_id', $productId)->first()){
+        DB::table('cart_product')->where('cart_id', $cart->id)->where('product_id', $productId)->limit(1)->delete();
+        if (DB::table('cart_product')->where('cart_id', $cart->id)->count() == 0) {
+            $cart->delete();
+        }
+        return response()->json(['message' => "Корзина пуста"]);
+    }
+    return response()->json(['error' => "Продукт отсутсвует в корзине"],404);
+    
+}
 }
