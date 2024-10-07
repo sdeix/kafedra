@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "2b3eecce-f4cd-4a3e-ba5a-01c24957077f",
+		"name": "Kafedra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26279260"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Регистрация",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"fio\": \"Иванов Иван Иванович\",\n    \"email\": \"admin@admin.ru\",\n    \"password\": \"adminpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Авторизация",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@admin.ru\",\n    \"password\": \"adminpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log out",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "yHqVS8sViY7PMNjIqyDQsBjPhUbXsdWKZSOdYLAwLzrPHERDozPzRdfGCtnc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Функционал клиента",
+			"item": [
+				{
+					"name": "Список продуктов",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотр корзины",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавить товар в корзину",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart/14",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Посмотреть свои заказы",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Оформление заказа",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление товара из корзины",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart/12",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неудачное добавление товара в корзину",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart/9998",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart",
+								"9998"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Функционал администратора",
+			"item": [
+				{
+					"name": "Добавление нового товара",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Product name 3\",\n    \"description\": \"Product description 3\",\n    \"price\": 300\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/product",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактирование товара",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Product name 3\",\n    \"description\": \"Product description 3\",\n    \"price\": 300\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/product",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление товара",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "luELgDgCHGcawcDCRq8KROI72nBxUgi5sWTBs7ovPHk8TZk4TsQkmH6kiSmG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/product/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "404",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/logaut",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"logaut"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1/api-shop",
+			"type": "string"
+		}
+	]
+}
