@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Cart extends Model
 {
@@ -14,10 +15,12 @@ class Cart extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'product_id',
         'user_id',
     ];
-
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
+    }
     protected $table = "cart";
     public $timestamps = false;
 }
