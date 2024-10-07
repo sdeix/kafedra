@@ -11,6 +11,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('products');
             $table->integer('order_price');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });
     }
 

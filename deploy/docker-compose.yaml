@@ -39,10 +39,11 @@ services:
     build: 
       context: dockerfiles
       dockerfile: artisan.dockerfile
+    restart: no
     volumes:
       - ../project:/var/www/laravel  
     entrypoint: ['php','/var/www/laravel/artisan']
     command: ["/bin/sh", "-c", "chown -R www-data:www-data /var/www/laravel/storage/logs /var/www/laravel/bootstrap/cache && php-fpm"] 
-
+    
 
 
