@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,4 +35,7 @@ Route::middleware('checktoken')->group(function () {
     Route::delete('/cart/{product_id}', [CartController::class,'removeProduct']);
     Route::get('/cart', [CartController::class,'getCart']);
 
+
+    Route::get('/order', [OrderController::class,'getOrders']);
+    Route::post('/order', [OrderController::class,'checkout']);
 });

@@ -31,7 +31,7 @@ class CartController extends Controller
         $user = User::where('token', $request->bearerToken())->first();
         $cart = Cart::where('user_id', $user->id)->first();
         if (!$cart) {
-            return response()->json(['error' => 'Корзина пуста'], 404);
+            return response()->json(['error' => 'Корзина пуста'], 422);
         }
 
         $products = $cart->products;
